@@ -9,7 +9,6 @@ interface Bible {
 @Injectable()
 export class BibleService {
   async getLivro(name: string): Promise<any> {
-    console.log(name);
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
     );
@@ -19,26 +18,21 @@ export class BibleService {
 
     return chapper[index];
   }
-  async getChapper(name: string): Promise<any> {
-    console.log(name);
+  async getCap(name: string, cap: number): Promise<any> {
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
     );
+    console.log(cap);
     const index = chapper.findIndex((chap) => chap.name == name);
 
-    console.log(index);
-
-    return chapper[index];
+    return chapper[index]['livros'][cap - 1];
   }
-  async getVer(name: string): Promise<any> {
+  async getVer(name: string, cap: number, ver: number): Promise<any> {
     console.log(name);
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
     );
     const index = chapper.findIndex((chap) => chap.name == name);
-
-    console.log(index);
-
-    return chapper[index];
+    return chapper[index]['livros'][cap - 1][ver - 1];
   }
 }

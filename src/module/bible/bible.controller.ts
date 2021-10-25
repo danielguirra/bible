@@ -4,14 +4,21 @@ import { BibleService } from './bible.service';
 @Controller('/bible')
 export class BibleController {
   constructor(private readonly appService: BibleService) {}
-
-  @Get('/:id')
-  getLivro(@Param('id') id: string): Promise<any> {
-    livro(id);
-    return this.appService.getLivro(id);
+  @Get('/:name')
+  getLivro(@Param('name') name: string): Promise<any> {
+    return this.appService.getLivro(name);
   }
-}
+  @Get('/:name/:cap')
+  getCap(@Param('name') name: string, @Param('cap') cap: any): Promise<any> {
+    return this.appService.getCap(name, cap);
+  }
 
-export function livro(id) {
-  return id;
+  @Get('/:name/:cap/:ver')
+  getVer(
+    @Param('cap') cap: number,
+    @Param('name') name: string,
+    @Param('ver') ver: number,
+  ): Promise<any> {
+    return this.appService.getVer(name, cap, ver);
+  }
 }
