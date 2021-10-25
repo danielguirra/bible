@@ -21,4 +21,8 @@ export class BibleController {
   ): Promise<any> {
     return this.appService.getVer(name, cap, ver);
   }
+  @Get()
+  getAll():Promise<any>{
+    return this.appService.getAll()
+  }
 }

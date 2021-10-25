@@ -35,4 +35,11 @@ export class BibleService {
     const index = chapper.findIndex((chap) => chap.name == name);
     return chapper[index]['livros'][cap - 1][ver - 1];
   }
+  async getAll(): Promise<any> {
+    let chapper: Bible[] = JSON.parse(
+      readFileSync('./src/module/bible/util/names.json', 'utf-8'),
+    );
+
+    return chapper;
+  }
 }
