@@ -3,9 +3,21 @@ import { BibleService } from './bible.service';
 
 @Controller('/bible')
 export class BibleController {
+  @Get()
+  getBible(): Promise<any> {
+    return this.appService.getBible();
+  }
   @Get('/nomes')
   getAll(): Promise<any> {
     return this.appService.getAll();
+  }
+  @Get('/velho')
+  getVel(): Promise<any> {
+    return this.appService.getVelho();
+  }
+  @Get('/novo')
+  getNov(): Promise<any> {
+    return this.appService.getNovo();
   }
   constructor(private readonly appService: BibleService) {}
   @Get('/:name')

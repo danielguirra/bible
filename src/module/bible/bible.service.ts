@@ -42,4 +42,23 @@ export class BibleService {
     );
     return name;
   }
+
+  async getVelho(): Promise<any> {
+    let velho: string[] = JSON.parse(
+      readFileSync('./src/module/bible/util/newbible.json', 'utf-8'),
+    );
+    return velho[0]['velho'];
+  }
+  async getNovo(): Promise<any> {
+    let novo: string[] = JSON.parse(
+      readFileSync('./src/module/bible/util/newbible.json', 'utf-8'),
+    );
+    return novo[0]['novo'];
+  }
+  async getBible(): Promise<any> {
+    let bible: string[] = JSON.parse(
+      readFileSync('./src/module/bible/util/newbible.json', 'utf-8'),
+    );
+    return bible;
+  }
 }
