@@ -7,6 +7,10 @@ export class BibleController {
   getBible(): Promise<any> {
     return this.appService.getBible();
   }
+  @Get('/verdia')
+  getVerdia(): Promise<any> {
+    return this.appService.verDia();
+  }
   @Get('/nomes')
   getAll(): Promise<any> {
     return this.appService.getAll();

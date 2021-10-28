@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { fstat, readFileSync, writeFileSync } from 'fs';
 import { writeFile } from 'fs/promises';
-
+import axios from 'axios';
+import * as cheerio from 'cheerio';
 interface Bible {
   id: string;
   name: string;
@@ -60,5 +61,12 @@ export class BibleService {
       readFileSync('./src/module/bible/util/newbible.json', 'utf-8'),
     );
     return bible;
+  }
+
+  async verDia(): Promise<any> {
+    let verDia = await axios.get('https://www.bibliaon.com/palavra_do_dia/');
+    const $ = await cheerio.load(verDia['data']);
+
+    return $('div#palavra_hoje.articlebody').text();
   }
 }
