@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { fstat, readFileSync, writeFileSync } from 'fs';
-import { writeFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 interface Bible {
@@ -57,10 +56,10 @@ export class BibleService {
     return novo[0]['novo'];
   }
   async getBible(): Promise<any> {
-    let bible: string[] = JSON.parse(
+    let bible = JSON.parse(
       readFileSync('./src/module/bible/util/newbible.json', 'utf-8'),
     );
-    return bible;
+    return bible[0];
   }
 
   async verDia(): Promise<any> {
