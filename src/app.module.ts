@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BibleModule } from './module/bible/bible.module';
+import { BibleAlmeidaModule } from './module/bible/bible.almeida.module';
+import { BibleKingJamesService } from './module/bible/bible.kingjames.service';
 
 @Module({
-  imports: [BibleModule],
+  imports: [BibleAlmeidaModule],
   controllers: [AppController],
   providers: [AppService],
 })
