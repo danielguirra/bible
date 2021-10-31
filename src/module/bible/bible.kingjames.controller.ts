@@ -4,9 +4,9 @@ import { BibleKingJamesService } from './bible.kingjames.service';
 @Controller('/kja')
 export class BibleKingJamesController {
   constructor(private readonly appService: BibleKingJamesService) {}
-  @Get('/arruma')
+  @Get()
   getBible(): Promise<any> {
-    return this.appService.arruma();
+    return this.appService.getBible();
   }
   @Get('/nomes')
   getAll(): Promise<any> {
