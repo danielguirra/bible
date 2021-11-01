@@ -7,7 +7,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Api da Biblia')
-    .setDescription('Documentação de uso')
+    .setDescription(
+      'Documentação de uso da biblia nas traduções de Almeida Revista e Corrigida e King James Atualizada',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
