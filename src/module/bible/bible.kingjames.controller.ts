@@ -21,21 +21,24 @@ export class BibleKingJamesController {
     return this.appService.getNovo();
   }
 
-  @Get('/:name')
-  getLivro(@Param('name') name: string): Promise<any> {
-    return this.appService.getLivro(name);
+  @Get('/:livro')
+  getLivro(@Param('livro') livro: string): Promise<any> {
+    return this.appService.getLivro(livro);
   }
-  @Get('/:name/:cap')
-  getCap(@Param('name') name: string, @Param('cap') cap: any): Promise<any> {
-    return this.appService.getCap(name, cap);
+  @Get('/:livro/:capitulo')
+  getCap(
+    @Param('livro') livro: string,
+    @Param('capitulo') capitulo: number,
+  ): Promise<any> {
+    return this.appService.getCap(livro, capitulo);
   }
 
-  @Get('/:name/:cap/:ver')
+  @Get('/:livro/:capitulo/:versiculo')
   getVer(
-    @Param('cap') cap: number,
-    @Param('name') name: string,
-    @Param('ver') ver: number,
+    @Param('livro') livro: string,
+    @Param('capitulo') capitulo: number,
+    @Param('versiculo') versiculo: number,
   ): Promise<any> {
-    return this.appService.getVer(name, cap, ver);
+    return this.appService.getVer(livro, capitulo, versiculo);
   }
 }
