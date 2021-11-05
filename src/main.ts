@@ -11,6 +11,11 @@ async function bootstrap() {
       'Documentação de uso da API da biblia nas traduções de Almeida Revista e Corrigida e King James Atualizada',
     )
     .setVersion('1.0')
+    .setContact(
+      'Daniel Guirra',
+      'https://github.com/danielguirra',
+      'daniel.guirra777@gmail.com',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
