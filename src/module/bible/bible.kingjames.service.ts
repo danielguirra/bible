@@ -60,6 +60,13 @@ export class BibleKingJamesService {
     );
     return bible[0];
   }
+  async getNumerosDeCapitulos(livro: string): Promise<any> {
+    let chapper: any[] = JSON.parse(
+      readFileSync('./src/module/bible/util/kja.json', 'utf-8'),
+    );
+    const index = chapper.findIndex((chap) => chap.id == livro);
+    return chapper[index]['capitulos'].length;
+  }
 
   // async arruma(): Promise<any> {
   //   let bible = JSON.parse(

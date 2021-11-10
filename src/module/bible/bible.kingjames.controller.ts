@@ -25,6 +25,10 @@ export class BibleKingJamesController {
   getLivro(@Param('livro') livro: string): Promise<any> {
     return this.appService.getLivro(livro);
   }
+  @Get('/:livro/capitulos')
+  getNumeroDeCapitulos(@Param('livro') livro: string): Promise<any> {
+    return this.appService.getNumerosDeCapitulos(livro);
+  }
   @Get('/:livro/:capitulo')
   getCap(
     @Param('livro') livro: string,

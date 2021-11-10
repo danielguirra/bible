@@ -9,6 +9,13 @@ interface Bible {
 }
 @Injectable()
 export class BibleAlmeidaService {
+  async getNumerosDeCapitulos(livro: string): Promise<any> {
+    let chapper: any[] = JSON.parse(
+      readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
+    );
+    const index = chapper.findIndex((chap) => chap.id == livro);
+    return chapper[index]['capitulos'].length;
+  }
   async getLivro(id: string): Promise<any> {
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
