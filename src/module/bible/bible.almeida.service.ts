@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { readFileSync } from 'fs';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { readFileSync } from 'fs';
+
 interface Bible {
   id: string;
   name: string;
@@ -22,21 +23,17 @@ export class BibleAlmeidaService {
     );
     const index = chapper.findIndex((chap) => chap.id == id);
 
-    console.log(index);
-
     return chapper[index];
   }
   async getCap(id: string, cap: number): Promise<any> {
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
     );
-    console.log(cap);
     const index = chapper.findIndex((chap) => chap.id == id);
 
     return chapper[index]['capitulos'][cap - 1];
   }
   async getVer(id: string, cap: number, ver: number): Promise<any> {
-    console.log(id);
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/bible.json', 'utf-8'),
     );

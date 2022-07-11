@@ -1,4 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
+
 import { BibleAlmeidaService } from './bible.almeida.service';
 
 @Controller('/arc')

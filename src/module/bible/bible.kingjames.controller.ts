@@ -1,4 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
+
 import { BibleKingJamesService } from './bible.kingjames.service';
 
 @Controller('/kja')

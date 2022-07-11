@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { readFileSync } from 'fs';
-import { writeFile } from 'fs/promises';
+
 interface Bible {
   id: string;
   name: string;
@@ -14,15 +14,12 @@ export class BibleKingJamesService {
     );
     const index = chapper.findIndex((chap) => chap.id == id);
 
-    console.log(index);
-
     return chapper[index];
   }
   async getCap(id: string, cap: number): Promise<any> {
     let chapper: Bible[] = JSON.parse(
       readFileSync('./src/module/bible/util/kja.json', 'utf-8'),
     );
-    console.log(cap);
     const index = chapper.findIndex((chap) => chap.id == id);
 
     return chapper[index]['capitulos'][cap - 1];
@@ -67,21 +64,4 @@ export class BibleKingJamesService {
     const index = chapper.findIndex((chap) => chap.id == livro);
     return chapper[index]['capitulos'].length;
   }
-
-  // async arruma(): Promise<any> {
-  //   let bible = JSON.parse(
-  //     readFileSync('./src/module/bible/util/kjanovo.json', 'utf-8'),
-  //   );
-  //   let bible2 = JSON.parse(
-  //     readFileSync('./src/module/bible/util/kjavelho.json', 'utf-8'),
-  //   );
-  //   let c = 39;
-  //   let te: any[] = [];
-  //   let full = {
-  //     velho: bible2,
-  //     novo: bible,
-  //   };
-  //   te.push(full);
-  //   writeFile('./src/module/bible/util/kja2.json', JSON.stringify(te), 'utf-8');
-  // }
 }
