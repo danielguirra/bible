@@ -67,9 +67,9 @@ export class BibleAlmeidaService {
   }
 
   async verDia(): Promise<any> {
-    let verDia = await axios.get('https://www.bibliaon.com/palavra_do_dia/');
+    let verDia = await axios.get('https://www.bibliaon.com/versiculo_do_dia/');
     const $ = await cheerio.load(verDia['data']);
 
-    return $('div#palavra_hoje.articlebody').text();
+    return $('p#versiculo_hoje.destaque').text();
   }
 }
